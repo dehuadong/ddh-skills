@@ -74,7 +74,7 @@ export async function collect() {
       const parts = relative.split('/');
       if (entry.isSymbolicLink()) { errors.push(`${relative}: symbolic links are not supported in Notes`); continue; }
       if (entry.isDirectory()) {
-        if (entry.name === 'templates' && (await readdir(full)).length === 0) continue;
+        if (relative === 'templates') continue;
         const scoped = recordRoots.some(owner => owner.path === parts[0]);
         const local = scoped ? parts.slice(1) : parts;
         if (local.length === 1 && !lifecycles.includes(entry.name)) errors.push(`${relative}: unknown lifecycle directory`);

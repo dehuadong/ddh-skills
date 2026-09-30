@@ -34,7 +34,7 @@ Compare each destination file with the bundle before writing:
 - **Missing** — fill it within the selected setup scope only after checking compatibility with existing project configuration and companion scripts. Do not mix incompatible script versions merely to fill a missing file.
 - **Different** — preserve the existing file and report the difference; do not infer that the bundled version is newer or more authoritative.
 
-These rules apply to the management README, local instructions, project category configuration, and the checker and navigator scripts. The management README owns the record format; there is no separate copyable template. Repeat setup alone is not an upgrade request. If everything is present and no change was requested, report that configuration was reused without asking for another approval.
+These rules apply to the management README, local instructions, project category configuration, the record template, and the checker and navigator scripts. The management README owns the record format; the template is a starting point for a proposed record, not a separate format authority. Repeat setup alone is not an upgrade request. If everything is present and no change was requested, report that configuration was reused without asking for another approval.
 
 When the user explicitly requests an upgrade, inspect differences and prepare a coherent merge that preserves project categories, formats and other customizations. Apply it within the authorized scope, then validate the resulting rules and scripts together. Do not require approval again for an already authorized merge; surface only unresolved project decisions.
 
@@ -49,10 +49,11 @@ The reusable source contains:
 - `.agents/notes/README.md`: management rules with project-configured categories
 - `.agents/notes/AGENTS.md`: local reading and maintenance guidance
 - `.agents/notes/config.json`: empty category configuration to populate from the target project
+- `.agents/notes/templates/record.md`: starting point for a proposed record
 - `scripts/decisions/README.md`: tool commands and upgrade boundary
 - `scripts/decisions/lib.mjs`, `check.mjs`, `list.mjs`: dependency-free Node.js tools
 
-For a new installation, copy these seven files to matching paths under the target project after the setup draft is approved or deployment is already authorized. For existing installations, follow the per-file rules above. Copy no records from this skill repository's own `.agents/notes/`. Existing projects retain their records; remove generated indexes only as part of an authorized, link-repaired upgrade.
+For a new installation, copy these eight files to matching paths under the target project after the setup draft is approved or deployment is already authorized. For existing installations, follow the per-file rules above. Copy no records from this skill repository's own `.agents/notes/`. Existing projects retain their records; remove generated indexes only as part of an authorized, link-repaired upgrade.
 
 The bundle defines no default categories. Reuse target-project categories, or propose ids, names and scopes based on its actual delivery objects and confirm them in the existing setup review. Save them in config.json; scripts read this configuration. An empty categories array can bootstrap the tool, but cannot classify records. Do not copy this skill repository's categories. Preserve the proposed/implemented/rejected lifecycle and record project approval evidence separately. Existing lifecycle migrations require an explicit upgrade request; preserve history and repair links.
 
