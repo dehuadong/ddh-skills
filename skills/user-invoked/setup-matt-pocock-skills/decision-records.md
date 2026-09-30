@@ -67,7 +67,7 @@ Reuse existing authoritative records; maintain affected records with the change,
 use read-only directory navigation when needed, and run the documented checks.
 ```
 
-Record the selected decision owner in `docs/agents/domain.md`. When Agent Notes own new decisions, do not leave a competing default ADR/RFC location. Existing authoritative ADRs and RFCs need not be duplicated or moved.
+Record the selected decision owner in `docs/agents/domain.md`. When Agent Notes own new decisions, do not leave a competing default ADR/RFC location. Identify which existing ADRs and RFCs still own current decisions and which are historical; retain old files for context without treating a historical record as authority for new work.
 
 Ordinary formatting and link maintenance do not trigger an engineering planning cycle. Material contract changes do. Overall proposals can link stages and module work items; project tracking owns progress, while each record retains its own delivery lifecycle.
 

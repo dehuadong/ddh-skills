@@ -84,7 +84,7 @@ Adapt this block to the selected configuration; omit unused areas and replace ex
 
 ### Issue tracker
 
-[one-line summary of where issues are tracked]. See `docs/agents/issue-tracker.md`.
+[one-line summary of where issues are tracked]. See `[configured tracker owner path]`.
 
 ### Triage labels
 
@@ -122,7 +122,7 @@ Before claiming setup complete, check the selected configuration:
 - Tracker destinations, work-state mappings, and review/approval references are explicit for selected work tracking; an existing work item is updated in its owner instead of duplicated.
 - Context layout matches the existing map or selected boundaries; shared registration and optional Agent Notes do not become per-context copies.
 - Destinations are registered only for selected independent contracts or designs; Agent Notes selected as design owner have no competing default RFC/ADR destination, and no empty planning artifacts were created.
-- Existing customizations and historical owners remain intact; no unused configuration or placeholder artifacts were introduced. Registered future locations need not exist yet.
+- Existing customizations and historical records remain intact; the entry distinguishes current owners from historical sources. No unused configuration or placeholder artifacts were introduced. Registered future locations need not exist yet.
 - Check availability of the chosen CLI or other configured access method. Where possible, use a read-only check for account access and destination identity. Missing credentials or tooling are a reported access limitation, not permission to install tools or create test issues, comments, or labels. When Agent Notes is selected, run its documented checks.
 
 Report files added, updated, or reused; the chosen entry and root; checks actually performed; and remaining decisions or access limitations. Distinguish local configuration completion from verified remote access. Repeat setup may inspect, fill gaps, or perform an explicitly requested upgrade; it is not a reset.

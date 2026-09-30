@@ -7,7 +7,7 @@ description: Diagnosis loop for hard bugs and performance regressions. Use when 
 
 A discipline for hard bugs. Skip phases only when explicitly justified.
 
-When exploring the codebase, read `CONTEXT.md` (if it exists) to get a clear mental model of the relevant modules, and check relevant Agent Notes or existing ADRs in their registered owner.
+When exploring the codebase, read `CONTEXT.md` (if it exists) for the domain language and check decisions in their current registered owner. Consult historical ADRs for context when relevant, without treating them as current constraints.
 
 ## Redact
 

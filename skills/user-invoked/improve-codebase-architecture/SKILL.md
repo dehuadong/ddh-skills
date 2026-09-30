@@ -11,7 +11,7 @@ Surface architectural friction and propose **deepening opportunities** — refac
 This command is _informed_ by the project's domain model and built on a shared design vocabulary:
 
 - Call the Skill tool with "codebase-design" for the architecture vocabulary (**module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**) and its principles (the deletion test, "the interface is the test surface", "one adapter = hypothetical seam, two = real"). Use these terms exactly in every suggestion — don't drift into "component," "service," "API," or "boundary."
-- The domain language in `CONTEXT.md` gives names to good seams; use the project's document ownership entry to find Agent Notes or existing ADRs whose decisions this command should not re-litigate.
+- The domain language in `CONTEXT.md` gives names to good seams; use the project's document ownership entry to find current decisions this command should respect. Historical ADRs provide context for reconsideration, not current constraints.
 
 ## Process
 
@@ -53,7 +53,7 @@ End the report with a **Top recommendation** section: which candidate you'd tack
 
 **Use CONTEXT.md vocabulary for the domain, and the `/codebase-design` vocabulary for the architecture.** If `CONTEXT.md` defines "Order," talk about "the Order intake module" — not "the FooBarHandler," and not "the Order service."
 
-**Decision conflicts**: if a candidate contradicts an existing Agent Note or ADR, only surface it when the friction is real enough to warrant revisiting that decision. Name and link the record in the card; don't list every theoretical refactor it forbids.
+**Decision conflicts**: if a candidate contradicts a current decision, only surface it when the friction is real enough to warrant revisiting that decision. Name and link its current owner in the card; mention a historical ADR only when its reasoning helps explain the trade-off.
 
 See [HTML-REPORT.md](HTML-REPORT.md) for the full HTML scaffold, diagram patterns, and styling guidance.
 
