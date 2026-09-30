@@ -8,7 +8,7 @@
 
 | 命令 | 作用 | 结束位置 |
 | --- | --- | --- |
-| `/planning` | 加载 planning，按需整理 Proposal、Spec、RFC 等必要合同与设计，并完成规划评审 | 回到 Discuss，等待下一条命令 |
+| `/planning` | 加载 planning，在工作项和选定的合同、设计属主中收敛范围与决定，并完成规划评审 | 回到 Discuss，等待下一条命令 |
 | `/implement` | 工作充分定义后加载 implement，完成实施、code-review 和 verify | 已授权范围验证完成，或明确阻塞 |
 
 “确认”“可以”“同意”不是推进命令。命令出现在引用、示例或文档中不构成授权。`/implement` 遇到关键合同缺口时报告 blocker 并建议 `/planning`，不能自动规划。实施中改变范围、合同或重大设计时暂停受影响工作，回到 Discuss，由用户重新决定如何推进。
@@ -35,7 +35,7 @@
 
 多项目配置时，setup 先提出上下文边界、名称和路径，由用户选择需要建立的范围；再分别选择哪些上下文启用 Notes、是否需要公共记录区。已有选择直接复用，新发现项目不会自动加入。记录目录按需创建，原有记录保持原路径。
 
-遵循“一个事实一个家”：Spec 拥有已接受的产品行为合同与验收条件；RFC 拥有实现设计；ADR 拥有需要长期保留的决定及其理由；Proposal 或 Ticket 跟踪本次范围、状态和评审/批准事实。小改动可由工作项直接承载行为与验收，不必另建 Spec。沿用项目既有属主，历史位置不自动迁移。详见 [注册规则](./skills/user-invoked/setup-matt-pocock-skills/artifact-registration.md) 和 [记录部署](./skills/user-invoked/setup-matt-pocock-skills/decision-records.md)。
+遵循“一个事实一个家”：Proposal 或 Ticket 拥有本次范围、产品行为与验收、状态和评审/批准事实；跨工作项持续生效的合同按需使用独立 Spec。采用 Agent Notes 的项目让 proposed/implemented Note 拥有长期技术设计与决定，不为同一决定另建 RFC 或 ADR。沿用已有独立工件的属主，历史位置不自动迁移。详见 [注册规则](./skills/user-invoked/setup-matt-pocock-skills/artifact-registration.md) 和 [记录部署](./skills/user-invoked/setup-matt-pocock-skills/decision-records.md)。
 
 ## 使用示例
 

@@ -26,7 +26,7 @@ The user requests the correction; determine its technical classification from ev
 
 Establish the selected repair scope and execution authorization under the project's workflow rules. Reuse authorization throughout in-scope correction, review, and re-verification.
 
-Inspect the spec, ADRs, code and tests first. A defect spanning layers is not itself a reason to stop. Pause affected work only if fixing it requires an unresolved change to product behavior, an approved contract, acceptance, compatibility, migration strategy or authorized scope; surface that decision and continue independent authorized work. Do not guess a new contract in code.
+Inspect the applicable product contract, Agent Notes or existing ADRs, code and tests first. A defect spanning layers is not itself a reason to stop. Pause affected work only if fixing it requires an unresolved change to product behavior, an approved contract, acceptance, compatibility, migration strategy or authorized scope; surface that decision and continue independent authorized work. Do not guess a new contract in code.
 
 ## Process
 

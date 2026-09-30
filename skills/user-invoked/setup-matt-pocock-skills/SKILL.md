@@ -10,7 +10,7 @@ Configure only what the selected skills and current request need. Existing suffi
 
 - **Issue tracker** — where issues live (GitHub by default; local markdown is also supported out of the box)
 - **Triage labels** — the strings used for the five canonical triage roles
-- **Domain docs** — where `CONTEXT.md` and ADRs live, and the consumer rules for reading them
+- **Domain docs** — where `CONTEXT.md` and existing durable decisions live, and the consumer rules for reading them
 - **Document ownership** — current and historical document owners, new destinations, and lifecycle conventions
 
 Inspect the current configuration, identify necessary differences, apply authorized changes, and verify the result. Setup configures selected tools and document locations; it does not grant planning or implementation authority. Preserve the project's progression rules unless the user explicitly requests their deployment or revision. Tracker states do not authorize `/planning` or `/implement`.
@@ -26,7 +26,7 @@ Resolve the repository management root from project instructions and existing do
 - `git remote -v` and `.git/config` — is this a GitHub repo? Which one?
 - `AGENTS.md` and `CLAUDE.md` at the repo root — does either exist? Is there already a `## 文档与约定` or `## Project conventions` section, or a legacy `## Agent skills` section, in either?
 - `CONTEXT.md` and `CONTEXT-MAP.md` at the repo root
-- Existing context maps and the ADR or domain-document locations they actually reference, including project directories outside `src/`
+- Existing context maps and decision or domain-document locations they actually reference, including project directories outside `src/`
 - `docs/agents/` — does this skill's prior output already exist?
 - Document ownership entries, representative planning files, and historical locations referenced by project instructions
 - Existing locations and creation rules for independent Specs and RFCs
@@ -59,15 +59,15 @@ Include the Proposal location/identifier, work-state representation and transiti
 
 Reuse the existing label mapping. If none exists, include the defaults in the configuration summary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. Ask only when a material mapping choice is unresolved. Preserve existing strings and the selected mapping; writing configuration does not itself authorize creating remote labels.
 
-**Section C — Document ownership and domain docs.** Read [artifact-registration.md](artifact-registration.md) to locate historical and new document owners. Reuse the existing document entry (normally `docs/AGENTS.md`); distinguish new-work routing from migration. When the user asks to add or revise writing and review standards, also read [docs-agents.md](docs-agents.md), merge only the selected rules into that existing owner, and preserve unrelated project rules. Use its registered ADR and decision locations. Without another choice, retain the single-context default of `CONTEXT.md` plus `docs/adr/`.
+**Section C — Document ownership and domain docs.** Read [artifact-registration.md](artifact-registration.md) to locate historical and new document owners. Reuse the existing document entry (normally `docs/AGENTS.md`); distinguish new-work routing from migration. When the user asks to add or revise writing and review standards, also read [docs-agents.md](docs-agents.md), merge only the selected rules into that existing owner, and preserve unrelated project rules. Use its registered decision locations. Without another choice, retain `CONTEXT.md` for a single context and select a decision location only when a durable decision needs one.
 
-Guide the choice of where new independent Specs and RFCs will live. Reuse existing project locations; where none are defined, offer `docs/specs/` for Specs and `docs/design/` for RFCs, with a custom path for either. Include the proposed destinations in the configuration difference summary and register the selected paths in the document ownership entry. Registering a destination does not require creating an empty directory or a placeholder document; Planning creates individual documents when needed.
+The work item owns its product behavior and acceptance. When a contract must remain effective across work items, reuse its independent Spec or register a new location chosen for that project. If Agent Notes are selected as the design owner, register their location for new technical proposals and decisions without also registering default RFC or ADR paths. Reuse existing independent design locations where they remain authoritative. Register only destinations that are needed; no empty directory or placeholder document is required.
 
-Reuse an established multi-context map even without workspace manifests. When no layout exists, propose boundaries, names and paths based on actual responsibilities. Confirm which contexts the user wants to establish in the configuration summary before creating the map; detecting projects or workspace entries does not select them. Reuse settled choices and confirm only additions or changes. A root `CONTEXT-MAP.md` points to the selected contexts' documents. Register intended locations without creating empty glossaries or ADRs.
+Reuse an established multi-context map even without workspace manifests. When no layout exists, propose boundaries, names and paths based on actual responsibilities. Confirm which contexts the user wants to establish in the configuration summary before creating the map; detecting projects or workspace entries does not select them. Reuse settled choices and confirm only additions or changes. A root `CONTEXT-MAP.md` points to the selected contexts' documents. Register intended locations without creating empty glossaries or decision records.
 
 Multi-context layouts share one document ownership entry. If Agent Notes is selected, separately confirm which established contexts need records and whether a shared record area is wanted, in the same configuration summary. Map only those selected scopes to separate directories within root `.agents/notes/`, following [decision-records.md](decision-records.md). Context selection does not automatically enable records or create categories; later-discovered projects do not expand either selection.
 
-**Optional decision records.** When the user requests categorized decision records with navigation and checks, read [decision-records.md](decision-records.md). Reuse any existing decision system first. Include this option in the same configuration review; prior explicit selection does not require another approval round. Selecting an engineering workflow alone does not require installing it.
+**Optional Agent Notes.** When the user selects Agent Notes as the owner of durable technical design and decisions, read [decision-records.md](decision-records.md). Reuse any existing decision system first. Include this option in the same configuration review; prior explicit selection does not require another approval round. Selecting an engineering workflow alone does not require installing it.
 
 ### 3. Apply authorized configuration
 
@@ -95,7 +95,7 @@ Adapt this block to the selected configuration; omit unused areas and replace ex
 The project document entry (normally `docs/AGENTS.md`) is the pointer map for document rules; keep each rule in its owner instead of copying it here:
 
 - Document types, owners, writing and review standards: `docs/AGENTS.md`.
-- Domain docs: `[single-context/multi-context and location summary]`; terminology and ADR consumer rules: `docs/agents/domain.md`.
+- Domain docs: `[single-context/multi-context and location summary]`; terminology and decision consumer rules: `docs/agents/domain.md`.
 - Agent Note scope, lifecycle and format: `.agents/notes/README.md`; local reading and maintenance guidance: `.agents/notes/AGENTS.md` (only when Agent Notes is selected).
 
 Resolve registered paths from the repository management root, even inside a subproject.
@@ -121,7 +121,7 @@ Before claiming setup complete, check the selected configuration:
 - Use one document-conventions pointer map: update an existing `## 文档与约定` or `## Project conventions` section in place; if only the legacy `## Agent skills` block exists, rename it in place. The map points to the target's document-standard owner and selected domain/Agent Notes owners without copying their rules; each path resolves from root and subproject entry points through the established management root.
 - Tracker destinations, work-state mappings, and review/approval references are explicit for selected work tracking; an existing work item is updated in its owner instead of duplicated.
 - Context layout matches the existing map or selected boundaries; shared registration and optional Agent Notes do not become per-context copies.
-- Destinations selected for new independent Specs and RFCs are explicit in the document ownership entry, using the project's existing locations or the selected defaults/custom paths; no empty planning artifacts were created for registration.
+- Destinations are registered only for selected independent contracts or designs; Agent Notes selected as design owner have no competing default RFC/ADR destination, and no empty planning artifacts were created.
 - Existing customizations and historical owners remain intact; no unused configuration or placeholder artifacts were introduced. Registered future locations need not exist yet.
 - Check availability of the chosen CLI or other configured access method. Where possible, use a read-only check for account access and destination identity. Missing credentials or tooling are a reported access limitation, not permission to install tools or create test issues, comments, or labels. When Agent Notes is selected, run its documented checks.
 

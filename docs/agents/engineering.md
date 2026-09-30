@@ -18,11 +18,11 @@ Use the `planning` skill when the user requests planning, including planning-onl
 
 For end-to-end work, skip Planning when the work already satisfies the Implementation Gate's readiness conditions. An explicit planning request still receives its requested deliverable and applicable review, reusing existing artifacts and valid evidence.
 
-Identify the Proposal or existing work item for the current change by its ID, URL or path. It defines the selected delivery scope and planning status, and points to the applicable product contract and technical design. Reuse it; a separate Proposal, Spec or RFC is needed only when its content needs a new owner.
+Identify the Proposal or existing work item for the current change by its ID, URL or path. It defines the selected delivery scope, product behavior and acceptance, review and approval evidence, and links to the applicable durable design. Reuse it; an independent Spec is needed only when a contract must remain effective across work items. The project's document owner selects Agent Notes or an existing design location for technical decisions.
 
-When normative behavior needs an independent owner, use a Spec as defined in [docs/AGENTS.md](../AGENTS.md#文档分层). Its accepted revision directly guides implementation and verification. Small work without an independent Spec may keep the contract directly in the work item.
+When normative behavior needs an independent owner across work items, use a Spec as defined by the project's document entry. Its accepted revision directly guides implementation and verification; otherwise the work item owns the current behavior and observable acceptance.
 
-An RFC may begin as a non-authoritative feasibility draft before its Spec is stable when technical constraints can materially change product scope. Feed those findings back into the Spec. Only after that Spec is stable may the RFC be accepted as an implementation basis. One Spec may be carried by multiple RFCs.
+A technical design may begin as a non-authoritative feasibility draft before the product contract is stable when technical constraints can materially change scope. Feed those findings back into the work item or independent Spec. Only after that contract is stable may the design be accepted as an implementation basis. In projects using Agent Notes as design owner, the proposed Note holds that design and the work item links to it; existing independent RFCs retain their owner.
 
 Planning owns its planning artifacts and Plan Review. After drafting, proactively complete Plan Review, resolve material findings in their owning artifacts, and review affected content again. Planning is complete only when required decisions are resolved and Plan Review passes; a finished draft alone does not complete the stage.
 
@@ -33,8 +33,8 @@ If a later stage exposes a material unresolved contract decision, return to `pla
 Enter implementation only when:
 
 * the identified Proposal or existing work item specifies the selected implementation scope
-* the applicable Spec revision has been reviewed and accepted, or the work item's equivalent contract is approved for small work; it states observable acceptance conditions
-* each required RFC identifies the Spec revision and sections it carries, without unresolved omissions, scope expansion or contradiction
+* the work item's product contract or applicable independent Spec revision has been reviewed and accepted; it states observable acceptance conditions
+* each required technical design identifies the product requirements it carries, without unresolved omissions, scope expansion or contradiction
 * necessary design decisions, required planning review and approvals are evidenced, with no material unresolved decision affecting this scope
 * dependencies and blockers allow the selected scope to start
 * execution authorization under repository rules covers that scope

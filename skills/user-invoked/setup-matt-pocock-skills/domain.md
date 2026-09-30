@@ -4,19 +4,19 @@ How the engineering skills should consume this repo's domain documentation when 
 
 ## Before exploring, read these
 
-Use the document ownership entry referenced by project instructions (normally `docs/AGENTS.md`) to resolve current and historical decision owners. ADR paths below are defaults; when decisions are registered elsewhere, read that location and do not create a competing ADR directory.
+Use the document ownership entry referenced by project instructions (normally `docs/AGENTS.md`) to resolve current and historical decision owners. When Agent Notes own new design decisions, read the selected Note root; existing ADR paths below describe historical or independently registered owners, not a reason to create a competing ADR directory.
 
 Resolve the document owners and root paths from the repository management root established by project instructions and registration, not the current subproject directory. Multiple contexts share that entry and root `.agents/notes/`; historical owners remain as registered. The context map selects domain documents. Its layout and initialization scope require user selection; discovering projects does not initialize contexts automatically. When Notes is enabled, its root configuration separately maps user-selected contexts to isolated record directories within `.agents/notes/`; use the read-only `node scripts/decisions/list.mjs` navigation for the relevant context and selected shared area. Contexts do not imply record categories or automatic Notes enrollment. Read context-local paths from the map and document entry rather than assuming every project lives under `src/`. Ordinary Markdown links resolve relative to their containing file.
 
 - **`CONTEXT.md`** at the repo root, or
 - **`CONTEXT-MAP.md`** at the repo root if it exists — it points at one `CONTEXT.md` per context. Read each one relevant to the topic.
-- **`docs/adr/`** — read ADRs that touch the area you're about to work in. In multi-context repos, use the context map and document ownership entry to locate context-scoped ADRs; project directories do not have a fixed `src/` prefix.
+- **Selected Agent Notes and existing ADRs** — read decisions that touch the area you're about to work in. In multi-context repos, use the context map and document ownership entry to locate context-scoped owners; project directories do not have a fixed `src/` prefix.
 
 If any of these files don't exist, **proceed silently**. Don't flag their absence; don't suggest creating them upfront. The `/domain-modeling` skill (reached via `/grill-with-docs` and `/improve-codebase-architecture`) creates them lazily when terms or decisions actually get resolved.
 
 ## File structure
 
-Single-context repo (most repos):
+Example of an existing single-context project with independent ADRs (Agent Notes projects use their selected record root instead):
 
 ```
 /
@@ -27,7 +27,7 @@ Single-context repo (most repos):
 └── src/
 ```
 
-Multi-context repo (presence of `CONTEXT-MAP.md` at the root):
+Example of an existing multi-context project with independent ADRs (presence of `CONTEXT-MAP.md` at the root):
 
 ```
 /
@@ -48,8 +48,8 @@ When your output names a domain concept (in an issue title, a refactor proposal,
 
 If the concept you need isn't in the glossary yet, that's a signal — either you're inventing language the project doesn't use (reconsider) or there's a real gap (note it for `/domain-modeling`).
 
-## Flag ADR conflicts
+## Flag decision conflicts
 
-If your output contradicts an existing ADR, surface it explicitly rather than silently overriding:
+If your output contradicts an existing Agent Note or ADR, surface it explicitly rather than silently overriding:
 
 > _Contradicts ADR-0007 (event-sourced orders) — but worth reopening because…_

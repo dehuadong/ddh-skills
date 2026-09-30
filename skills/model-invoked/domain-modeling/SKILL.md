@@ -1,6 +1,6 @@
 ---
 name: domain-modeling
-description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a CONTEXT.md, or recording or editing an ADR.
+description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a CONTEXT.md, or recording a durable decision in its selected owner.
 ---
 
 # Domain Modeling
@@ -9,11 +9,11 @@ Actively build and sharpen the project's domain model as you design. This is the
 
 ## File structure
 
-Follow the documentation hierarchy referenced by project instructions for current decision ownership. If an existing ADR owns a durable decision, use it instead of creating a duplicate. Paths and creation rules below are fallbacks where no project convention overrides them.
+Follow the documentation hierarchy referenced by project instructions for current decision ownership. Agent Notes may own durable design and decisions; an existing ADR remains authoritative until an authorized migration. Paths and creation rules below are fallbacks where no project convention overrides them.
 
 Resolve the repository management root from project instructions, using the Git top-level only as a fallback. Working inside a subproject does not change it. A root `CONTEXT-MAP.md` selects domain documents when the repository has multiple contexts. Do not create a separate record system per context or derive record categories automatically from contexts.
 
-Most repos have a single context:
+Example of a single-context project with independent ADRs (Agent Notes projects use their selected record root instead):
 
 ```
 /
@@ -25,7 +25,7 @@ Most repos have a single context:
 └── src/
 ```
 
-If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The map points to where each one lives:
+If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. This example shows an existing ADR-based layout:
 
 ```
 /
@@ -41,7 +41,7 @@ If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The ma
 │       └── docs/adr/
 ```
 
-Create files lazily in the selected context or repository-wide owner: only when you have something to write. Resolve context paths from project instructions and the context map; the `src/` layout above is an example. An existing context ADR remains the decision's authority; Agent Notes may reference it without copying the decision. Create an ADR directory only when an independent ADR is needed at the project-defined or fallback owner.
+Create files lazily in the selected context or repository-wide owner: only when you have something to write. Resolve context paths from project instructions and the context map; the `src/` layout above is an example of an existing ADR-based project. An existing context ADR remains the decision's authority; Agent Notes may reference it without copying the decision. When Agent Notes own new decisions, use their selected record root rather than creating an ADR directory.
 
 ## During the session
 
@@ -67,12 +67,12 @@ When a term is resolved, update `CONTEXT.md` right there. Don't batch these up: 
 
 `CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
 
-### Offer ADRs sparingly
+### Record durable decisions sparingly
 
-Only offer to create an ADR when all three are true:
+Only offer a durable decision record when all three are true:
 
 1. **Hard to reverse**: the cost of changing your mind later is meaningful
 2. **Surprising without context**: a future reader will wonder "why did they do it this way?"
 3. **The result of a real trade-off**: there were genuine alternatives and you picked one for specific reasons
 
-If any of the three is missing, skip the ADR. Invoke the `adr` skill for its eligibility rules, status, and template; it is the single source for ADR format.
+If any of the three is missing, skip the separate record. Invoke the `adr` skill for eligibility and owner selection; use the Agent Notes README for Note format and lifecycle, or the ADR skill format when an independent ADR owns the decision.

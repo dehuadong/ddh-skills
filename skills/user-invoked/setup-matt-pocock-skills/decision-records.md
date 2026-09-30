@@ -8,7 +8,7 @@ New installations use `.agents/notes/` for Agent Notes. For an existing location
 
 Resolve the repository management root through the project document ownership entry before deployment. Target paths in this resource are relative to that root, not the invocation's current directory. A multi-context repository shares one Agent Notes installation and its scripts; do not deploy another bundle inside each subproject. Contexts and record categories are independent: use config.json rather than generating categories from project folders.
 
-Follow [artifact-registration.md](artifact-registration.md) to establish document owners and historical/new locations. New Proposals use configured work tracking; decision records may reference them without duplicating their contents or work status. Preserve registered historical files that serve both roles and their state mappings unless migration is authorized. Independent RFCs/Specs retain their own owners. Deploying this bundle does not silently change that ownership.
+Follow [artifact-registration.md](artifact-registration.md) to establish document owners and historical/new locations. New Proposals use configured work tracking and link to their relevant Agent Notes. The Note owns the durable design and decision, while work scope, product acceptance, review and approval evidence remain in the work item. Preserve registered historical files that serve both roles and their state mappings unless migration is authorized. Existing independent RFCs, Specs and ADRs retain their owners; deploying this bundle does not silently migrate them.
 
 Inspect existing decision, ADR, RFC and proposal conventions. Reuse their authoritative locations rather than creating a competing system. If adopting this bundle requires changing existing categories, statuses or formats, present that mapping in the setup draft; do not migrate records or overwrite customized files implicitly.
 
@@ -55,19 +55,19 @@ The reusable source contains:
 
 For a new installation, copy these eight files to matching paths under the target project after the setup draft is approved or deployment is already authorized. For existing installations, follow the per-file rules above. Copy no records from this skill repository's own `.agents/notes/`. Existing projects retain their records; remove generated indexes only as part of an authorized, link-repaired upgrade.
 
-The bundle defines no default categories. Reuse target-project categories, or propose ids, names and scopes based on its actual delivery objects and confirm them in the existing setup review. Save them in config.json; scripts read this configuration. An empty categories array can bootstrap the tool, but cannot classify records. Do not copy this skill repository's categories. Preserve the proposed/implemented/rejected lifecycle and record project approval evidence separately. Existing lifecycle migrations require an explicit upgrade request; preserve history and repair links.
+The bundle defines no default categories. Reuse target-project categories, or propose ids, names and scopes based on its actual delivery objects and confirm them in the existing setup review. Save them in config.json; scripts read this configuration. An empty categories array can bootstrap the tool, but cannot classify records. Do not copy this skill repository's categories. Preserve the proposed/implemented/rejected lifecycle and keep project approval evidence in the work item. Existing lifecycle or metadata migrations require an explicit upgrade request; preserve history and repair links.
 
 Add a concise reference in the selected project instruction file:
 
 ```markdown
 ### Agent Notes
 
-For nontrivial engineering changes and major proposals, follow `.agents/notes/README.md`.
+For durable technical proposals and decisions, follow `.agents/notes/README.md`.
 Reuse existing authoritative records; maintain affected records with the change,
 use read-only directory navigation when needed, and run the documented checks.
 ```
 
-Record the agreed relationship to ADRs in `docs/agents/domain.md`. Do not leave a default ADR location that conflicts with the selected decision location. Existing authoritative ADRs need not be duplicated or moved.
+Record the selected decision owner in `docs/agents/domain.md`. When Agent Notes own new decisions, do not leave a competing default ADR/RFC location. Existing authoritative ADRs and RFCs need not be duplicated or moved.
 
 Ordinary formatting and link maintenance do not trigger an engineering planning cycle. Material contract changes do. Overall proposals can link stages and module work items; project tracking owns progress, while each record retains its own delivery lifecycle.
 
