@@ -9,7 +9,7 @@ Actively build and sharpen the project's domain model as you design. This is the
 
 ## File structure
 
-Follow the document ownership entry referenced by project instructions. Read current decisions from their registered owner; use historical ADRs as background only when the entry marks them historical. File existence or an old `accepted` status does not establish current authority.
+Follow the document ownership entry referenced by project instructions for glossary paths and decisions applicable to the model being discussed. If a required input's owner or scope is unclear, report the configuration gap.
 
 Resolve the repository management root from project instructions, using the Git top-level only as a fallback. Working inside a subproject does not change it. A root `CONTEXT-MAP.md` selects domain documents when the repository has multiple contexts. Do not create a separate record system per context or derive record categories automatically from contexts.
 

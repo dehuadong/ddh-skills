@@ -32,7 +32,7 @@ First reuse the governing work item, acceptance conditions and applicable design
 
 ### 3. Identify the standards sources
 
-Read project instructions and the document ownership entry, then relevant writing and coding standards such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`. Include current authoritative Agent Notes, RFCs or ADRs that constrain the changed area. Historical records may explain context but are not standards unless the project still registers them as current authority.
+Read project instructions and the document ownership entry, then relevant writing and coding standards such as `CODING_STANDARDS.md` or `CONTRIBUTING.md`. Include the applicable design decisions and constraints identified by the project configuration and governing work item. Report missing or conflicting required inputs as review coverage gaps.
 
 On top of whatever the repo documents, the Standards axis always carries the **smell baseline** below: a fixed set of Fowler code smells (_Refactoring_, ch.3) that applies even when a repo documents nothing. Two rules bind it:
 

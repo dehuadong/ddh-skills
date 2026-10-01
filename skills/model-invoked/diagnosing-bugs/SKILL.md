@@ -7,7 +7,7 @@ description: Diagnosis loop for hard bugs and performance regressions. Use when 
 
 A discipline for hard bugs. Skip phases only when explicitly justified.
 
-When exploring the codebase, read `CONTEXT.md` (if it exists) for the domain language and check decisions in their current registered owner. Consult historical ADRs for context when relevant, without treating them as current constraints.
+When exploring the codebase, use the domain glossary and applicable contracts, designs and decisions identified by project instructions and the work item to form testable hypotheses. Report required-input gaps or conflicts and their effect on the diagnosis; keep dependent expectations unverified.
 
 ## Redact
 

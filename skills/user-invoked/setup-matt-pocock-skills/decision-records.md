@@ -1,6 +1,6 @@
-# Optional Agent Notes setup
+# Agent Notes configuration and deployment
 
-Use this resource when the user selects a categorized decision system with read-only directory navigation and checks. It supplements project configuration; it does not choose an engineering workflow, approve decisions, or authorize implementation.
+Use this resource when the setup scope includes Planning or Agent Notes. Configure record locations and, when needed, deploy the read-only navigator and checks. Setup does not approve decisions or authorize implementation.
 
 ## Existing projects
 
@@ -8,9 +8,9 @@ New installations use `.agents/notes/` for Agent Notes. For an existing location
 
 Resolve the repository management root through the project document ownership entry before deployment. Target paths in this resource are relative to that root, not the invocation's current directory. A multi-context repository shares one Agent Notes installation and its scripts; do not deploy another bundle inside each subproject. Contexts and record categories are independent: use config.json rather than generating categories from project folders.
 
-Follow [artifact-registration.md](artifact-registration.md) to establish document owners and historical/new locations. New Proposals use configured work tracking and link to their relevant Agent Notes. The Note owns the durable design and decision, while work scope, product acceptance, review and approval evidence remain in the work item. Preserve registered historical files that serve both roles and their state mappings unless migration is authorized. Existing independent RFCs, Specs and ADRs retain their owners; deploying this bundle does not silently migrate them.
+Follow [artifact-registration.md](artifact-registration.md) for document ownership and any historical transition. New Proposals use configured work tracking and link to their relevant Agent Notes. The Note owns the durable design and decision, while work scope, product acceptance, review and approval evidence remain in the work item.
 
-Inspect existing decision, ADR, RFC and proposal conventions. Reuse their authoritative locations rather than creating a competing system. If adopting this bundle requires changing existing categories, statuses or formats, present that mapping in the setup draft; do not migrate records or overwrite customized files implicitly.
+Inspect the existing Notes installation, categories, statuses and formats. Present necessary changes in the setup draft and preserve customizations outside the authorized change.
 
 ## Select record scopes
 
@@ -67,7 +67,7 @@ Reuse existing authoritative records; maintain affected records with the change,
 use read-only directory navigation when needed, and run the documented checks.
 ```
 
-Record the selected decision owner in `docs/agents/domain.md`. When Agent Notes own new decisions, do not leave a competing default ADR/RFC location. Identify which existing ADRs and RFCs still own current decisions and which are historical; retain old files for context without treating a historical record as authority for new work.
+Register the Notes location in the project document entry; make `docs/agents/domain.md` consume that entry rather than maintain a second ownership map. Use [artifact-registration.md](./artifact-registration.md) for other artifact owners and transitions.
 
 Ordinary formatting and link maintenance do not trigger an engineering planning cycle. Material contract changes do. Overall proposals can link stages and module work items; project tracking owns progress, while each record retains its own delivery lifecycle.
 
