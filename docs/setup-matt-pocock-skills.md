@@ -128,4 +128,4 @@ node scripts/decisions/list.mjs
 
 自定义安装使用项目登记的命令；上下文筛选等用法见 [Notes 工具说明](../skills/user-invoked/setup-matt-pocock-skills/resources/decision-records/scripts/decisions/README.md)。Node.js 不可用时，setup 应报告无法运行的检查。机械检查验证格式、配置和链接，决定内容与权威仍需按项目规则评审。
 
-配置完成后，根据目标项目的工程推进规则开展工作。采用本仓库授权约定的项目，由用户另行发出 `/planning` 收敛范围和决定，或在工作充分定义后发出 `/implement`。setup 不自动创建产品提案、不发布 Issue 或标签，也不开始产品实现。
+配置完成后，根据目标项目的工程推进规则开展工作。采用本仓库授权约定的项目，由用户另行发出 `/planning` 收敛范围和决定，或在工作充分定义后发出 `批准，执行实现`。setup 不自动创建产品提案、不发布 Issue 或标签，也不开始产品实现。

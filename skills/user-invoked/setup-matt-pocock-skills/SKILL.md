@@ -13,7 +13,7 @@ Configure only what the selected skills and current request need. Existing suffi
 - **Domain docs** — where `GLOSSARY.md` and existing durable decisions live, and the consumer rules for reading them
 - **Document ownership** — current and historical document owners, new destinations, and lifecycle conventions
 
-Inspect the current configuration, identify necessary differences, apply authorized changes, and verify the result. Setup configures selected tools and document locations; it does not grant planning or implementation authority. Preserve the project's progression rules unless the user explicitly requests their deployment or revision. Tracker states do not authorize `/planning` or `/implement`.
+Inspect the current configuration, identify necessary differences, apply authorized changes, and verify the result. Setup configures selected tools and document locations; it does not grant planning or implementation authority. Preserve the project's progression rules unless the user explicitly requests their deployment or revision. Tracker states do not authorize planning or implementation.
 
 ## Process
 

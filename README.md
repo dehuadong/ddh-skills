@@ -4,16 +4,16 @@
 
 ## 工程推进
 
-当前入口是 [AGENTS.md](./AGENTS.md) 的“工程工作流”。默认 Discuss，讨论收敛后按 [GATES.md](./docs/agents/GATES.md) 的 Steps 推进，由用户明确发出命令：
+当前入口是 [AGENTS.md](./AGENTS.md) 的“工程工作流”。默认 Discuss，讨论收敛后按 [GATES.md](./docs/agents/GATES.md) 的 Steps 推进，由用户明确输入：
 
-| 命令 | 作用 | 结束位置 |
+| 授权输入 | 作用 | 结束位置 |
 | --- | --- | --- |
 | `/planning` | 加载 planning，在工作项、按需独立 Spec 与 Agent Notes 中收敛范围和决定，并完成规划评审 | 回到 Discuss，等待下一条命令 |
-| `/implement` | 工作充分定义后加载 implement，完成实施、code-review 和 verify | 已授权范围验证完成，或明确阻塞 |
+| `批准，执行实现` | 工作充分定义后加载 implement，完成实施、code-review 和 verify | 已授权范围验证完成，或明确阻塞 |
 
-“确认”“可以”“同意”不是推进命令。命令出现在引用、示例或文档中不构成授权。`/implement` 遇到关键合同缺口时报告 blocker 并建议 `/planning`，不能自动规划。实施中改变范围、合同或重大设计时暂停受影响工作，回到 Discuss，由用户重新决定如何推进。
+“确认”“可以”“同意”不是推进命令。命令出现在引用、示例或文档中不构成授权。`批准，执行实现` 遇到关键合同缺口时报告 blocker 并建议 `/planning`，不能自动规划。实施中改变范围、合同或重大设计时暂停受影响工作，回到 Discuss，由用户重新决定如何推进。
 
-这些命令是用户授权约定，不是本仓库提供的命令解析器。安装环境负责发现技能和接收用户输入。
+这些输入是用户授权约定，安装环境负责发现技能和接收用户输入。
 
 GATES 集中维护授权、阶段准入和返回规则，技能维护具体工作方法。模型仍需判断合同是否充分，命令不会填补缺失需求。旧 [engineering-v2.md](./docs/agents/engineering-v2.md) 仅保留为独立方法论参考，不是本仓库当前入口，也不与当前门控规则叠加。
 
@@ -23,7 +23,7 @@ GATES 集中维护授权、阶段准入和返回规则，技能维护具体工�
 2. 在目标项目 AGENTS.md 或 CLAUDE.md 中采用本仓库的讨论规则，并引用部署到项目中的 GATES.md；保留已有适用规则，授权与门控集中维护在该文件中。
 3. 按需调用 [setup-matt-pocock-skills](./skills/user-invoked/setup-matt-pocock-skills/SKILL.md)，配置跟踪器、工件归属和领域资料。已有配置优先复用，setup 不授予规划或实施权限。新项目、已有项目补配置与历史归档的提示词见 [setup 使用指南](./docs/setup-matt-pocock-skills.md)。
 
-技能仍按 user-invoked 与 model-invoked 分组存储；目录分组不授予执行权限。planning 和 implement 保留现有目录位置，其调用策略设置为显式选择，具体阶段授权由 GATES.md 的命令规则决定。
+技能仍按 user-invoked 与 model-invoked 分组存储；目录分组不授予执行权限。planning 和 implement 保留现有目录位置，按 GATES.md 的授权与步骤加载；用户输入「批准，执行实现」后，在 Step 3 加载 implement 检查准入条件。
 
 | 配置或工件 | 默认位置与用途 |
 | --- | --- |
@@ -49,10 +49,10 @@ GATES 集中维护授权、阶段准入和返回规则，技能维护具体工�
 规划完成后不会自动实施。准备实施时，另行发出：
 
 ```text
-/implement 按已确认工作项实现导出功能，完成审查与验证。
+批准，执行实现 按已确认工作项实现导出功能，完成审查与验证。
 ```
 
-需求已充分定义时可以从 Discuss 直接 `/implement`，无需先创建规划产物。只想验收交付物时选择 to-verify；要修复实现缺陷时，先明确修复范围，再用 `/implement` 授权，可同时指定 fix-bug 的专项方法。普通文档治理依 AGENTS.md 的例外处理。
+需求已充分定义时可以从 Discuss 直接 `批准，执行实现`，无需先创建规划产物。只想验收交付物时选择 to-verify；要修复实现缺陷时，先明确修复范围，再用 `批准，执行实现` 授权，可同时指定 fix-bug 的专项方法。普通文档治理依 AGENTS.md 的例外处理。
 
 ## 选配与依赖
 
