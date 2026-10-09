@@ -14,11 +14,11 @@ Inspect the existing Notes installation, categories, statuses and formats. Prese
 
 ## Select record scopes
 
-First reuse the user-confirmed context layout; setup must confirm proposed context boundaries, names and paths before initializing a new `CONTEXT-MAP.md`. Repository discovery alone does not authorize creating all contexts.
+First reuse the user-confirmed context layout; setup must confirm proposed context boundaries, names and paths before initializing a new `GLOSSARY-MAP.md`. Repository discovery alone does not authorize creating all contexts.
 
 Separately confirm which established contexts need Agent Notes and whether a shared area is needed, in the same setup summary. Reuse existing selections; ask only about new or changed scopes. It is valid to enable only some contexts or none. Do not create Notes for every mapped context automatically.
 
-The root config maps selected context identifiers from `CONTEXT-MAP.md` to distinct directories under `.agents/notes/`. Each selected directory has its own lifecycle/category tree; `list.mjs` prints the configured record directories and can filter by context. The map owns domain boundaries, while Notes config owns record enrollment and paths. Categories remain independent. Use `node scripts/decisions/list.mjs --context ordering` and, when selected, `--shared` to locate relevant record directories; follow explicit cross-context links as needed.
+The root config maps selected context identifiers from `GLOSSARY-MAP.md` to distinct directories under `.agents/notes/`. Each selected directory has its own lifecycle/category tree; `list.mjs` prints the configured record directories and can filter by context. The map owns domain boundaries, while Notes config owns record enrollment and paths. Categories remain independent. Use `node scripts/decisions/list.mjs --context ordering` and, when selected, `--shared` to locate relevant record directories; follow explicit cross-context links as needed.
 
 See the bundled [management rules](resources/decision-records/.agents/notes/README.md) for `contextMap` and `recordRoots` configuration. Record context map paths relative to the management root and record directory paths relative to `.agents/notes/`. Register paths first; create a selected directory only when its first record is needed. Cross-context decisions have one owner in the selected shared area or an agreed participating context, with links from other contexts rather than duplicate records. If no suitable owner is selected, resolve that choice before creating the record.
 

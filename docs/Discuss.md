@@ -12,7 +12,7 @@
 
 讨论应明确当前问题、推荐方向、关键权衡和剩余未决事项。
 
-不要因探索性讨论自动创建规划产物或进入后续阶段；进入 Planning 或 Implementation Gate 由用户授权。
+不要因探索性讨论自动创建规划产物或进入后续阶段。讨论后推进、直接收到阶段请求或恢复工程工作时，读取 `docs/agents/GATES.md`，按其授权与门控步骤执行。
 ```
 
 ## Discuss-V2 版本
@@ -34,7 +34,7 @@
 
 不要要求用户重复已有信息，也不要仅因探索性讨论创建规划产物。
 
-讨论收敛时，说明已解决事项、剩余未决事项以及建议的下一阶段；进入 Planning 或 Implementation Gate 由用户授权。
+讨论收敛时，说明已解决事项、剩余未决事项和建议的下一阶段。讨论后推进、直接收到阶段请求或恢复工程工作时，读取 `docs/agents/GATES.md`，按其授权与门控步骤执行。
 ```
 
 ## Discuss-V3 完整版本
@@ -45,19 +45,6 @@
 > 文档和仓库治理工作可以绕过该工程工作流，除非它改变了重要的产品、技术、架构或其他工程契约。
 
 工程任务从 Discuss 开始。
-进入后续阶段时，读取并按 `docs/agents/engineering.md` 执行：
-`Discuss → Planning → Implementation Gate → Implement → Verify`
-
-阶段技能交接（锚在**可判定的动作**上，而不是"进入了某个阶段"）：
-
-* 用户授权推进、且存在待固化的合同决策（进入 Planning）→ `planning`
-* Implementation Gate 通过、**写第一行实现代码之前** → `implement`
-* 实现完成、**报告完成或提交之前** → `code-review`（Implementation Review）
-* 实现期采用测试优先 → `tdd`
-* 审查通过、**声称交付（PASS/完成）之前** → `verify`
-
-上列动作发生前必须加载对应技能。加载技能不等于满足该阶段的完成条件，也不替代该阶段要求的审查。
-Discuss 及阶段推进权限在此定义；Planning 之后的阶段编排、门禁、审查收敛和返回路径由 `docs/agents/engineering.md` 定义。
 
 ### Discuss
 
@@ -88,25 +75,6 @@ Discuss 及阶段推进权限在此定义；Planning 之后的阶段编排、门
 
 何时从 Discuss 进入 Planning 或 Implementation Gate，由用户决定。若用户此前的请求已经明确授权推进，则复用该授权。
 
-当用户已授权推进时：
+讨论后推进、直接收到阶段请求或恢复工程工作时，读取并按 `docs/agents/GATES.md` 的 Steps、授权与返回规则执行；具体工作方法由对应技能负责。
 
-- 若仍有重要合同决策需要补全或正式固化，则进入 Planning
-- 否则按照 `docs/agents/engineering.md` 中的 Implementation Gate 继续
-
-授权进入 Planning 不等于授权实施。
-
-### 执行授权
-
-当当前范围已具备实施条件但尚未获得执行授权时，需要用户明确输入“执行实现”。
-“确认”“可以”“同意”等仅表示审批，不构成执行授权。
-执行授权在已确定的工作范围内持续有效，覆盖：
-- 实施
-- Implementation Review
-- 范围内修正
-- Verify
-
-阶段切换不要求重复授权。
-新增范围或尚未解决的重大合同决策仍需重新获得相应授权。
-端到端请求在获得执行授权并通过相应工作流门禁后，持续推进至验证完成。
-限定阶段的请求，在该阶段及其要求的审查完成后结束。
 ```

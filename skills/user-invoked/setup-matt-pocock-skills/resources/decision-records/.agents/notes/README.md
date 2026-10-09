@@ -33,7 +33,7 @@ config.json 使用如下结构，示例类别仅展示字段，不是默认分�
 
 ## 按上下文隔离记录
 
-上下文布局（边界、名称、路径及初始化范围）由用户确定，复用 `CONTEXT-MAP.md`，扫描到项目不自动初始化上下文。启用 Notes 时，在同一次配置说明中另外确认哪些上下文需要记录、是否需要公共记录区；只确认尚未确定的部分。新增上下文不自动启用记录。
+上下文布局（边界、名称、路径及初始化范围）由用户确定，复用 `GLOSSARY-MAP.md`，扫描到项目不自动初始化上下文。启用 Notes 时，在同一次配置说明中另外确认哪些上下文需要记录、是否需要公共记录区；只确认尚未确定的部分。新增上下文不自动启用记录。
 
 根级 config.json 可增加 `contextMap`（相对仓库管理根目录）和 `recordRoots`（仅登记已选记录范围）。例如，下例表示用户已选择 ordering 的记录和公共记录，其他上下文未启用：
 
@@ -41,7 +41,7 @@ config.json 使用如下结构，示例类别仅展示字段，不是默认分�
 {
   "version": 1,
   "categories": [],
-  "contextMap": "CONTEXT-MAP.md",
+  "contextMap": "GLOSSARY-MAP.md",
   "recordRoots": [
     { "context": "ordering", "name": "订购", "path": "ordering" },
     { "context": null, "name": "公共决定", "path": "shared" }

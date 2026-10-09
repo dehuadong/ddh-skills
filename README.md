@@ -4,7 +4,7 @@
 
 ## 工程推进
 
-当前入口是 [AGENTS.md](./AGENTS.md) 的“工程推进”。默认 Discuss，由模型提出下一步建议，由用户明确发出命令：
+当前入口是 [AGENTS.md](./AGENTS.md) 的“工程工作流”。默认 Discuss，讨论收敛后按 [GATES.md](./docs/agents/GATES.md) 的 Steps 推进，由用户明确发出命令：
 
 | 命令 | 作用 | 结束位置 |
 | --- | --- | --- |
@@ -15,22 +15,23 @@
 
 这些命令是用户授权约定，不是本仓库提供的命令解析器。安装环境负责发现技能和接收用户输入。
 
-不再需要复制 ./docs/engineering.md 或维护单独的 Implementation Gate 文档。模型仍需判断合同是否充分，命令不会填补缺失需求。旧 [engineering-v2.md](./docs/agents/engineering-v2.md) 仅保留为独立方法论参考，不是本仓库当前入口，也不与上述命令规则叠加。
+GATES 集中维护授权、阶段准入和返回规则，技能维护具体工作方法。模型仍需判断合同是否充分，命令不会填补缺失需求。旧 [engineering-v2.md](./docs/agents/engineering-v2.md) 仅保留为独立方法论参考，不是本仓库当前入口，也不与当前门控规则叠加。
 
 ## 接入项目
 
 1. 从 [技能目录](./skills/README.md) 选择完整技能目录，安装到使用环境支持的位置，保留支持文件。跨技能调用使用技能名，不绑定本仓库路径。
-2. 在目标项目 AGENTS.md 或 CLAUDE.md 中采用本仓库“工程推进”的授权规则，保留已有适用规则；不需要另建工程流程文件。
+2. 在目标项目 AGENTS.md 或 CLAUDE.md 中采用本仓库的讨论规则，并引用部署到项目中的 GATES.md；保留已有适用规则，授权与门控集中维护在该文件中。
 3. 按需调用 [setup-matt-pocock-skills](./skills/user-invoked/setup-matt-pocock-skills/SKILL.md)，配置跟踪器、工件归属和领域资料。已有配置优先复用，setup 不授予规划或实施权限。新项目、已有项目补配置与历史归档的提示词见 [setup 使用指南](./docs/setup-matt-pocock-skills.md)。
 
-技能仍按 user-invoked 与 model-invoked 分组存储；目录分组不授予执行权限。planning 和 implement 保留现有目录位置，其调用策略设置为显式选择，具体阶段授权仍由 AGENTS.md 的命令规则决定。
+技能仍按 user-invoked 与 model-invoked 分组存储；目录分组不授予执行权限。planning 和 implement 保留现有目录位置，其调用策略设置为显式选择，具体阶段授权由 GATES.md 的命令规则决定。
 
 | 配置或工件 | 默认位置与用途 |
 | --- | --- |
-| 推进授权 | 根级 AGENTS.md 或 CLAUDE.md |
+| 讨论与门控入口 | 根级 AGENTS.md 或 CLAUDE.md，讨论收敛后引用 GATES.md |
+| 推进授权与门控 | docs/agents/GATES.md，按 Steps 编排工作项推进 |
 | 跟踪器 | docs/agents/issue-tracker.md，登记工作项位置、状态和操作 |
 | 文档归属 | 目标项目既有文档入口（通常 docs/AGENTS.md），写清当前位置和历史属主 |
-| 领域资料 | 根 CONTEXT-MAP.md 或 CONTEXT.md，各上下文资料按映射定位 |
+| 领域资料 | 根 GLOSSARY-MAP.md 或 GLOSSARY.md，各上下文资料按映射定位 |
 | Agent Notes | Planning 中长期技术设计与决定的属主；根 .agents/notes/ 内按已选上下文分目录，只读命令导航目录树 |
 
 多项目配置时，setup 先提出上下文边界、名称和路径，由用户选择需要建立的范围；再分别选择哪些上下文启用 Notes、是否需要公共记录区。已有选择直接复用，新发现项目不会自动加入。记录目录按需创建，原有记录保持原路径。
@@ -69,4 +70,4 @@
 
 ## 文档维护
 
-AGENTS.md 拥有推进权限；技能拥有实际工作方法及完成条件；本 README 说明接入与使用方式。Agent Note 格式与生命周期见 [通用记录规则](./skills/user-invoked/setup-matt-pocock-skills/resources/decision-records/.agents/notes/README.md)。setup 的 resources/decision-records 保存通用资源，不复制本仓库项目历史。
+AGENTS.md 拥有讨论规则与门控入口；GATES.md 拥有阶段授权、准入和返回规则；技能拥有实际工作方法及完成条件；本 README 说明接入与使用方式。Agent Note 格式与生命周期见 [通用记录规则](./skills/user-invoked/setup-matt-pocock-skills/resources/decision-records/.agents/notes/README.md)。setup 的 resources/decision-records 保存通用资源，不复制本仓库项目历史。

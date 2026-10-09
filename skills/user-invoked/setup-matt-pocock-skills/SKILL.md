@@ -10,14 +10,14 @@ Configure only what the selected skills and current request need. Existing suffi
 
 - **Issue tracker** — where issues live (GitHub by default; local markdown is also supported out of the box)
 - **Triage labels** — the strings used for the five canonical triage roles
-- **Domain docs** — where `CONTEXT.md` and existing durable decisions live, and the consumer rules for reading them
+- **Domain docs** — where `GLOSSARY.md` and existing durable decisions live, and the consumer rules for reading them
 - **Document ownership** — current and historical document owners, new destinations, and lifecycle conventions
 
 Inspect the current configuration, identify necessary differences, apply authorized changes, and verify the result. Setup configures selected tools and document locations; it does not grant planning or implementation authority. Preserve the project's progression rules unless the user explicitly requests their deployment or revision. Tracker states do not authorize `/planning` or `/implement`.
 
 ## Process
 
-On repeat invocation, default to inspecting and filling missing configuration, not replacing or upgrading existing files. Reuse settled choices without asking again. Skip identical files; preserve and report differences from bundled defaults, including scripts. Apply changes to existing files only within an explicitly requested reconfiguration or upgrade scope. The steps below do not authorize blanket overwrites or duplicate instruction blocks.
+On repeat invocation, default to inspecting and filling missing configuration, not replacing or upgrading existing files, except for the glossary filename migration in Section C. Reuse settled choices without asking again. Skip identical files; preserve and report differences from bundled defaults, including scripts. Apply other changes to existing files only within an explicitly requested reconfiguration or upgrade scope. The steps below do not authorize blanket overwrites or duplicate instruction blocks.
 
 ### 1. Explore
 
@@ -25,7 +25,7 @@ Resolve the repository management root from project instructions and existing do
 
 - `git remote -v` and `.git/config` — is this a GitHub repo? Which one?
 - `AGENTS.md` and `CLAUDE.md` at the repo root — does either exist? Is there already a `## 文档与约定` or `## Project conventions` section, or a legacy `## Agent skills` section, in either?
-- `CONTEXT.md` and `CONTEXT-MAP.md` at the repo root
+- `GLOSSARY.md` and `GLOSSARY-MAP.md`, plus legacy `CONTEXT.md` and `CONTEXT-MAP.md`, at the repo root
 - Existing context maps and decision or domain-document locations they actually reference, including project directories outside `src/`
 - `docs/agents/` — does this skill's prior output already exist?
 - Document ownership entries, representative planning files, and historical locations referenced by project instructions
@@ -38,7 +38,7 @@ Resolve the repository management root from project instructions and existing do
 
 Present one concise configuration difference summary: what is reused, what needs adding or changing, and any migration or overwrite implications. Include proposed content for changes that need a user decision. Ask only for unresolved material choices, grouping independent questions where useful; reuse prior decisions and authorization rather than requiring a separate approval round after each section. If no changes are needed, proceed to verification.
 
-Apply only the relevant configuration areas below. Skip triage configuration when `triage` is not selected or installed; inspect existing document ownership independently of context count.
+Apply only the relevant configuration areas below, plus the legacy glossary migration in Section C on every setup invocation. Skip triage configuration when `triage` is not selected or installed; inspect existing document ownership independently of context count.
 
 **Section A — Issue tracker.**
 
@@ -59,11 +59,15 @@ Include the Proposal location/identifier, work-state representation and transiti
 
 Reuse the existing label mapping. If none exists, include the defaults in the configuration summary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. Ask only when a material mapping choice is unresolved. Preserve existing strings and the selected mapping; writing configuration does not itself authorize creating remote labels.
 
-**Section C — Document ownership and domain docs.** Read [artifact-registration.md](artifact-registration.md) to register historical and new document owners, including routes for the selected workflow's first records. Reuse the existing document entry (normally `docs/AGENTS.md`); distinguish new-work routing from migration. When creating or filling ownership configuration, read the project ownership example in [docs-agents.md](docs-agents.md). Read its writing and review rules only when those standards are requested; merge the selected content and preserve unrelated project rules. Use the entry's registered decision locations. Without another choice, retain `CONTEXT.md` for a single context.
+**Section C — Document ownership and domain docs.** Read [artifact-registration.md](artifact-registration.md) to register historical and new document owners, including routes for the selected workflow's first records. Reuse the existing document entry (normally `docs/AGENTS.md`); distinguish new-work routing from migration. When creating or filling ownership configuration, read the project ownership example in [docs-agents.md](docs-agents.md). Read its writing and review rules only when those standards are requested; merge the selected content and preserve unrelated project rules. Use the entry's registered decision locations. Without another choice, use `GLOSSARY.md` for a single context.
+
+**Legacy glossary migration.** Setup includes renaming the management root's legacy `CONTEXT-MAP.md` to `GLOSSARY-MAP.md` and replacing legacy domain glossaries named `CONTEXT.md` with `GLOSSARY.md` at the same location, at the management root and in contexts selected by the existing map or document ownership entry. Include this migration in the configuration difference summary and apply it during setup unless the user excludes it. Preserve all existing content and update active references in project instructions, document ownership, domain consumer rules, glossary maps, and other referring files, including the map's links to renamed glossaries. For either filename pair, consolidate byte-identical files under the new name; if their contents differ, preserve both and resolve the authoritative content with the user before completing the affected migration. Historical quotations and unrelated files with legacy filenames are outside this migration. Register `GLOSSARY.md` for future use when no glossary exists, without creating an empty file.
+
+Include configuration files in reference repair: when an existing Agent Notes `config.json` uses `contextMap` to point to the renamed map, update that path to `GLOSSARY-MAP.md` while preserving the rest of its configuration. Verify the configured path and the map's glossary links resolve after migration.
 
 The work item owns its product behavior and acceptance. When a contract must remain effective across work items, reuse its configured Spec or register a needed location. For the Planning workflow, configure Agent Notes for new durable technical designs and decisions. Existing artifact ownership and any requested transition follow [artifact-registration.md](./artifact-registration.md). Register only needed destinations; no empty artifact is required.
 
-Reuse an established multi-context map even without workspace manifests. When no layout exists, propose boundaries, names and paths based on actual responsibilities. Confirm which contexts the user wants to establish in the configuration summary before creating the map; detecting projects or workspace entries does not select them. Reuse settled choices and confirm only additions or changes. A root `CONTEXT-MAP.md` points to the selected contexts' documents. Register intended locations without creating empty glossaries or decision records.
+Reuse an established multi-context map even without workspace manifests. When no layout exists, propose boundaries, names and paths based on actual responsibilities. Confirm which contexts the user wants to establish in the configuration summary before creating the map; detecting projects or workspace entries does not select them. Reuse settled choices and confirm only additions or changes. A root `GLOSSARY-MAP.md` points to the selected contexts' documents. Register intended locations without creating empty glossaries or decision records.
 
 Multi-context layouts share one document ownership entry. If Agent Notes is selected, separately confirm which established contexts need records and whether a shared record area is wanted, in the same configuration summary. Map only those selected scopes to separate directories within root `.agents/notes/`, following [decision-records.md](decision-records.md). Context selection does not automatically enable records or create categories; later-discovered projects do not expand either selection.
 
@@ -121,6 +125,7 @@ Before claiming setup complete, check the selected configuration:
 - Use one document-conventions pointer map: update an existing `## 文档与约定` or `## Project conventions` section in place; if only the legacy `## Agent skills` block exists, rename it in place. The map points to the target's document-standard owner and selected domain/Agent Notes owners without copying their rules; each path resolves from root and subproject entry points through the established management root.
 - Tracker destinations, work-state mappings, and review/approval references are explicit for selected work tracking; an existing work item is updated in its owner instead of duplicated.
 - Context layout matches the existing map or selected boundaries; shared registration and optional Agent Notes do not become per-context copies.
+- Migrated maps and glossaries retain their content apart from updated references, active references resolve to `GLOSSARY-MAP.md` and `GLOSSARY.md`, and no duplicate legacy map or glossary remains in migrated scopes. Report exclusions and unresolved filename/content conflicts as incomplete migrations; a repeat run with no legacy files requires no migration changes.
 - Verify first-record routing for the selected workflow against [artifact-registration.md](artifact-registration.md): enabled types have registered destinations or creation rules and reachable rule owners, disabled types name their content owner, and on-demand types define registration before use. Needed independent behavior contracts have registered destinations; new Planning designs use the configured Agent Notes location and selected record scopes. No competing default RFC/ADR destination or empty planning artifact was created. Report required routing gaps before claiming configuration complete.
 - Existing customizations and historical records remain intact; the entry distinguishes current owners from historical sources. No unused configuration or placeholder artifacts were introduced. Registered future locations need not exist yet.
 - Check availability of the chosen CLI or other configured access method. Where possible, use a read-only check for account access and destination identity. Missing credentials or tooling are a reported access limitation, not permission to install tools or create test issues, comments, or labels. When Agent Notes is selected, run its documented checks.
