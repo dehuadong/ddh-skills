@@ -42,7 +42,7 @@
 ```md
 ## 工程工作流 
 
-工程任务从 Discuss 开始。
+工程任务从 Discuss 开始。先阅读授权与门控 [GATES.md](docs/agents/GATES.md)。
 
 ### Discuss
 
