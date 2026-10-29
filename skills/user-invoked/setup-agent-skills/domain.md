@@ -6,7 +6,7 @@ How the engineering skills should consume this repo's domain documentation when 
 
 Use the document ownership entry referenced by project instructions (normally `docs/AGENTS.md`) to locate the domain glossary and applicable designs, decisions and constraints for the task.
 
-Resolve document paths from the repository management root established by project instructions, not the current subproject directory. The context map selects domain documents; read context-local paths from it and the document entry rather than assuming every project lives under `src/`. For Agent Notes, use its configured record roots and documented read-only navigation when needed. Ordinary Markdown links resolve relative to their containing file.
+Resolve document paths from the repository management root established by project instructions, not the current subproject directory. The context map selects domain documents; read context-local paths from it and the document entry rather than assuming every project lives under `src/`. For isolated Agent Notes, use the selected roots listed in `.agents/notes/AGENTS.md` and pass each root with DSH's `--root <path>` option. Ordinary Markdown links resolve relative to their containing file.
 
 - **`GLOSSARY.md`** at the repo root, or
 - **`GLOSSARY-MAP.md`** at the repo root if it exists — it points at one `GLOSSARY.md` per context. Read each one relevant to the topic.
@@ -16,7 +16,7 @@ An absent optional glossary does not require creating one upfront. The `domain-m
 
 ## File structure
 
-A single-context project may use a root `GLOSSARY.md`; a root `GLOSSARY-MAP.md` points to selected context glossaries in a multi-context project. Resolve decision record paths separately from the document ownership entry and, when selected, the Agent Notes record-root configuration.
+A single-context project may use a root `GLOSSARY.md`; a root `GLOSSARY-MAP.md` points to selected context glossaries in a multi-context project. Resolve Agent Note paths from the selected Notes root map; format and lifecycle follow the installed `write-agent-notes` Skill.
 
 ## Use the glossary's vocabulary
 
