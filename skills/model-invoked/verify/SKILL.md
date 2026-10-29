@@ -57,4 +57,6 @@ Determine the overall result from the current required conditions:
 
 ### Completion
 
-Only final PASS completes the engineering work. Update the authoritative work item using the project's completion convention after successful verification. Where required by the project's decision-record lifecycle, transition applicable decision records to `implemented` only after final PASS. A finished verification attempt, implementation, or review alone does not justify these completion updates.
+Only final PASS completes the engineering work and authorizes post-Verify remote delivery. Update the authoritative work item using the project's completion convention after successful verification. Where required by the project's decision-record lifecycle, transition applicable decision records to `implemented` only after final PASS. A finished verification attempt, implementation, or review alone does not justify these completion updates.
+
+Verify is a local acceptance stage: it must not push branches, create or update pull requests, or merge changes. After final PASS, remote delivery is a separate step governed by `docs/agents/GATES.md`; FAIL or BLOCKED must not proceed to remote delivery.
