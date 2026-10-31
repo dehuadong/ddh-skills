@@ -1,0 +1,36 @@
+name: Verify Agent Notes
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify Agent Notes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Verify note tree
+        run: npx --yes tsx skills/model-invoked/write-agent-notes/scripts/verify-agent-note-tree.ts --root .agents/notes
+
+      - name: Verify note format
+        run: npx --yes tsx skills/model-invoked/write-agent-notes/scripts/verify-agent-note-format.ts --root .agents/notes
+
+      - name: Verify archived note seals
+        env:
+          AGENT_NOTE_ARCHIVE_BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: npx --yes tsx skills/model-invoked/write-agent-notes/scripts/verify-archived-agent-notes.ts --root .agents/notes
