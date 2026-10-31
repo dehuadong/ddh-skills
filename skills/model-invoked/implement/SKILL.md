@@ -68,4 +68,6 @@ Implementation is complete when:
 
 For authorized end-to-end work, continue to the project's Verify stage after these conditions hold; do not wait for another instruction to verify.
 
-Update the identified work item's implementation progress using the project's workflow convention. Leave final delivery completion and decision-record completion updates to the project's Verify stage.
+Update the identified work item's implementation progress using the project's workflow convention. Leave final verification and delivery completion updates to their owning stages.
+
+**Remote-delivery boundary:** this skill must not push branches, create or update pull requests, or merge changes. Those actions are permitted only in the post-Verify remote-delivery step defined by `docs/agents/GATES.md`, and only after final Verify PASS.
